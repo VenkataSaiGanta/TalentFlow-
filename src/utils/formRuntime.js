@@ -1,11 +1,11 @@
-// Visibility + validation used by Preview and Runtime
+
 
 export function isVisible(q, answers) {
   if (!q?.showIf) return true
   const { qId, equals } = q.showIf
   if (!qId) return true
   const val = answers[qId]
-  // support both scalar and array answers
+ 
   if (Array.isArray(val)) return val.map(String).includes(String(equals))
   return String(val) === String(equals)
 }

@@ -1,4 +1,4 @@
-// src/views/Candidates.jsx
+
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { api } from '../api'
 import { stages } from '../db'
@@ -8,16 +8,16 @@ import VirtualList from '../components/VirtualList'
 export default function Candidates({ navigate }) {
   const [jobs, setJobs] = useState([])
   const [jobId, setJobId] = useState('')
-  const [stageFilter, setStageFilter] = useState('') // '' = all
+  const [stageFilter, setStageFilter] = useState('') 
   const [q, setQ] = useState('')
   const [items, setItems] = useState([])
-  const [tab, setTab] = useState('list') // 'list' | 'board'
+  const [tab, setTab] = useState('list') 
   const [loading, setLoading] = useState(true)
   const [toast, setToast] = useState('')
   const [kind, setKind] = useState('success')
 
-  // drag state (kanban)
-  const dragRef = useRef(null) // { id, fromStage }
+  
+  const dragRef = useRef(null) 
   const [hoverStage, setHoverStage] = useState('')
 
   useEffect(() => {

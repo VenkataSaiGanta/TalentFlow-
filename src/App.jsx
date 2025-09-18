@@ -10,7 +10,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import { api } from './api'
 
 function useEnsureSeed() {
-  // Kick a lightweight request so MSW can seed Dexie on first load
+  
   useEffect(() => { api('/jobs?check=all').catch(() => {}) }, [])
 }
 
@@ -23,10 +23,10 @@ export default function App() {
 
   let page = null
   if (path.startsWith('/jobs')) {
-    // Keep JobDetail contract unchanged (expects `match`)
+    
     page = mJob ? <JobDetail match={mJob} /> : <Jobs navigate={navigate} />
   } else if (path.startsWith('/candidates')) {
-    // CandidateProfile expects `params` and `navigate`
+    
     page = mCand
       ? <CandidateProfile params={mCand.params} navigate={navigate} />
       : <Candidates navigate={navigate} />

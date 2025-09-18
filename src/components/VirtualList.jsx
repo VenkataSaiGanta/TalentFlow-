@@ -1,4 +1,4 @@
-// src/components/VirtualList.jsx
+
 import React, { useMemo, useRef, useState, useEffect } from 'react'
 
 export default function VirtualList({ items, rowHeight = 72, overscan = 6, renderRow, className='' }) {

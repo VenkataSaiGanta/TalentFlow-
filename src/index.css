@@ -21,7 +21,7 @@
   .selectable { @apply inline-flex items-center px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-sm cursor-pointer hover:bg-slate-50; }
   .selectable.selected { @apply border-sky-400 ring-2 ring-sky-200; }
 
-  /* simple switch */
+
   .switch { @apply relative inline-flex h-6 w-10 items-center rounded-full border border-slate-300 bg-white; }
   .switch-dot { @apply inline-block h-4 w-4 transform rounded-full bg-slate-400 transition; }
   .switch.on { @apply border-sky-500; }

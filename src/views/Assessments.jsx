@@ -94,7 +94,7 @@ export default function Assessments() {
     })
   }
 
-  // questions that appear before qId (for showIf “Based on”)
+  // questions that appear before qId 
   function priorQuestionsOf(qId) {
     const acc = []
     for (const sec of schema.sections || []) {
@@ -156,7 +156,7 @@ export default function Assessments() {
                 {(sec.questions || []).map(q => (
                   <div key={q.id} className="border rounded-xl p-3">
                     <div className="grid md:grid-cols-2 gap-3">
-                      {/* Left: core config */}
+                     
                       <div className="space-y-2">
                         <div>
                           <label className="block text-xs text-slate-500 mb-1">Question label</label>
@@ -231,7 +231,7 @@ export default function Assessments() {
                         </div>
                       </div>
 
-                      {/* Right: very simple conditional */}
+                      
                       <div className="space-y-2">
                         <div className="text-xs text-slate-500">Show this question only when…</div>
                         <div className="grid grid-cols-2 gap-2">
@@ -257,7 +257,7 @@ export default function Assessments() {
                             <label className="block text-xs text-slate-500 mb-1">Equals</label>
                             {(() => {
                               const controlling = priorQuestionsOf(q.id).find(p => p.id === q.showIf?.qId)
-                              // If controller is choice-type, offer dropdown of its options. Else free text.
+                              
                               if (controlling && (controlling.type === 'single' || controlling.type === 'multi')) {
                                 return (
                                   <select
@@ -378,7 +378,7 @@ function baseQuestion(type) {
 }
 
 function resetForType(q, newType) {
-  // Keep label/required/help; reset type-specific fields
+  
   const common = { label: q.label, required: q.required, help: q.help }
   if (newType === 'single') return { ...common, type: 'single', options: ['Yes', 'No'], showIf: q.showIf }
   if (newType === 'multi')  return { ...common, type: 'multi', options: ['Option A', 'Option B'], showIf: q.showIf }

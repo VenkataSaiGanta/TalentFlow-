@@ -5,11 +5,11 @@ export function uniqueSlug(slug, jobs, editingId=null) {
   return !jobs.some(j => j.slug === slug && j.id !== editingId)
 }
 
-/** Validate answers given a schema; returns { errors, firstErrorId } */
+
 export function validateAnswers(schema, answers) {
   const errors = {}
   const visible = {}
-  // precompute visibility
+
   for (const sec of schema.sections || []) {
     for (const q of sec.questions || []) {
       visible[q.id] = isVisible(q, answers)

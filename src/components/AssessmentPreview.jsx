@@ -28,7 +28,7 @@ export default function AssessmentPreview({ schema, jobId, candidateId, onSubmit
         }
       }
     } catch {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [jobId])
 
   // Validate only for currently visible questions
@@ -93,7 +93,7 @@ export default function AssessmentPreview({ schema, jobId, candidateId, onSubmit
     setMsg('Submitting…')
 
     try {
-      // You already have the MSW handler: POST /assessments/:jobId/submit
+      //   have the MSW handler: POST /assessments/:jobId/submit
       await api(`/assessments/${jobId}/submit`, {
         method: 'POST',
         body: {
@@ -110,7 +110,7 @@ export default function AssessmentPreview({ schema, jobId, candidateId, onSubmit
       setMsg('Submitted! Response saved locally.')
       if (typeof onSubmitted === 'function') onSubmitted({ jobId, candidateId, answers })
 
-      // Optional: reset form after submit
+      // reset form after submit
       // setAnswers({})
     } catch (err) {
       setKind('error')

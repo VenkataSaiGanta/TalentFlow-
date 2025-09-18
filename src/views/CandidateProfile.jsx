@@ -1,4 +1,4 @@
-// src/views/CandidateProfile.jsx
+
 import React, { useEffect, useMemo, useState } from 'react'
 import { api } from '../api'
 import { stages } from '../db'
@@ -9,15 +9,15 @@ const fmt = (ts)=> new Date(ts).toLocaleString()
 export default function CandidateProfile({ params, navigate }) {
   const candId = Number(params?.id || window.location.pathname.split('/').pop())
   const [cand, setCand] = useState(null)
-  const [allNames, setAllNames] = useState([]) // for @mentions suggestions
+  const [allNames, setAllNames] = useState([]) 
   const [note, setNote] = useState('')
-  const [suggest, setSuggest] = useState([]) // array of names
+  const [suggest, setSuggest] = useState([])
   const [toast, setToast] = useState('')
   const [kind, setKind] = useState('success')
 
   useEffect(() => {
     api(`/candidates/${candId}`).then(setCand)
-    // pull a small roster for mentions
+    
     api('/candidates?pageSize=2000').then(r => setAllNames((r.items||[]).map(c => `${c.name}`)))
   }, [candId])
 

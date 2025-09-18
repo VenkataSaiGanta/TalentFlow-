@@ -66,7 +66,7 @@ postcss.config.cjs
 
 module.exports = {
   plugins: {
-    '@tailwindcss/postcss': {}, // ✅ not "tailwindcss" directly
+    '@tailwindcss/postcss': {}, 
     autoprefixer: {},
   },
 }
@@ -191,7 +191,7 @@ Hit /__debug/schema (we exposed a debug endpoint) → each table’s idx is [].
 
 Reorder & archive no longer throw errors.
 
-🧪 Error Injection & Latency
+Error Injection & Latency:-
 
 In handlers.js:
 
@@ -201,7 +201,7 @@ const FAIL = () => Math.random() < 0.08 // ~8% writes fail
 
 I applied  delay() to all endpoints and FAIL() to write endpoints (POST/PATCH/PUT).
 
-Technical Decisions
+Technical Decisions:-
 
 MSW over Mirage: MSW integrates with the platform’s SW and gives a realistic network boundary; great DevTools story.
 

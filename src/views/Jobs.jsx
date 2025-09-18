@@ -20,7 +20,7 @@ export default function Jobs({ navigate }) {
   const [toastKind, setToastKind] = useState('success')
 
   // drag state
-  const dragItem = useRef(null) // { idx, job }
+  const dragItem = useRef(null) 
   const [hoverIdx, setHoverIdx] = useState(null)
 
   async function load() {
@@ -33,7 +33,7 @@ export default function Jobs({ navigate }) {
   }
   useEffect(() => { load() }, [q, status, tags, page, pageSize, sort])
 
-  // Clear hover highlight when list changes
+  
   useEffect(() => { setHoverIdx(null) }, [data.items])
 
   function onDragStart(idx, job) {
@@ -46,10 +46,10 @@ export default function Jobs({ navigate }) {
 
   function handleDragOver(idx, e) {
     e.preventDefault()
-    setHoverIdx(idx) // highlight the whole card as a "slot"
+    setHoverIdx(idx) 
   }
 
-  // move item at "from" to "to" index in a shallow-copied array
+  
   function moveAtSlot(arr, from, to) {
     const copy = [...arr]
     const [m] = copy.splice(from, 1)
@@ -61,7 +61,7 @@ export default function Jobs({ navigate }) {
     const source = dragItem.current
     if (!source || !targetJob || source.job.id === targetJob.id) return
 
-    // Reordering only makes sense in manual order mode
+    // Reordering 
     if (sort !== 'order') {
       setToastKind('error'); setToast('Switch Sort to "Manual Order" to drag & drop.')
       setTimeout(() => { setToast(''); setToastKind('success') }, 1400)
@@ -72,7 +72,7 @@ export default function Jobs({ navigate }) {
     // ----- OPTIMISTIC: insert at the hovered "slot" index -----
     setData(d => {
       const list = [...d.items]
-      const from = list.findIndex(j => j.id === source.job.id) // robust against prior UI changes
+      const from = list.findIndex(j => j.id === source.job.id) 
       if (from === -1) return d
       // if dragging from above, removing shifts the slot left by 1; account for that
       const insertAt = from < idx ? Math.max(0, idx - 1) : idx
@@ -86,10 +86,10 @@ export default function Jobs({ navigate }) {
       let fromOrder = Number(source.job.order)
       let targetOrder = Number(targetJob.order)
        console.log("hello man 2");
-      // If any order is missing/NaN (e.g., after edits or first seed), compute from the full list.
+      
       if (!Number.isFinite(fromOrder) || !Number.isFinite(targetOrder)) {
          console.log("hello man 3");
-        const all = await api('/jobs?check=all') // returns {items:[...]} unsliced
+        const all = await api('/jobs?check=all')
         const list = (all.items || [])
           .map((j, i) => ({ ...j, order: Number.isFinite(j.order) ? Number(j.order) : i }))
           .sort((a, b) => a.order - b.order)
@@ -100,7 +100,7 @@ export default function Jobs({ navigate }) {
         targetOrder = tgtIdx < 0 ? list.length - 1 : tgtIdx
       }
 
-      // Slot semantics: drop INTO the target slot index.
+      
       const toOrder = fromOrder < targetOrder ? targetOrder - 1 : targetOrder
         
       await api(`/jobs/reorder`, {
@@ -109,7 +109,7 @@ export default function Jobs({ navigate }) {
       })
 
       setToast('Reordered')
-      load() // refresh the current page slice from DB
+      load() 
     } catch (err) {
        console.log("hello man 4");
       console.log("hello man 4",err);

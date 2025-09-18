@@ -24,7 +24,7 @@ export default function Kanban() {
   async function onDrop(stage) {
     const c = dragging.current
     if (!c || c.stage === stage) return
-    // optimistic move
+   
     setCols(prev=>{
       const next = structuredClone(prev)
       next[c.stage] = next[c.stage].filter(x=>x.id!==c.id)

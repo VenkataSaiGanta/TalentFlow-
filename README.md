@@ -12,7 +12,6 @@ npm install
 npm run dev
 
 
-Open http://localhost:3000
 .
 You should see [MSW] Mocking enabled. in the console on first load.
 

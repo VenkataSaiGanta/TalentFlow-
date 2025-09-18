@@ -17,7 +17,7 @@ export default function JobDetail({ match }) {
         </div>
       </div>
       <div className="mt-6">
-        <a className="underline text-slate-700" href="http://localhost:3000/assessments">Open assessment builder for this job</a>
+        <a className="underline text-slate-700" href="https://talentflowhiring3.netlify.app/assessments">Open assessment builder for this job</a>
       </div>
     </div>
   )

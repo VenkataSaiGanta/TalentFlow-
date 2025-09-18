@@ -165,6 +165,7 @@ export default function Jobs({ navigate }) {
 
   return (
     <div className="container-xl py-6">
+      
       <div className="flex items-end justify-between gap-4 mb-4">
         <div className="flex flex-wrap gap-3 items-end">
           <div>
@@ -217,7 +218,7 @@ export default function Jobs({ navigate }) {
         </div>
       </div>
 
-      {data.items.length === 0 ? (
+      {(data.items.length === 0||data.items.length===undefined) ? (
         <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center">
           <div className="text-lg font-medium">No jobs found</div>
           <p className="text-sm mt-1 text-slate-600">Create a job or reload to allow demo data to seed.</p>

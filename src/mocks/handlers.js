@@ -66,6 +66,7 @@ const jobsHandlers = [
       if (t.length) items = items.filter(j => t.every(tt => (j.tags || []).map(x => x.toLowerCase()).includes(tt)))
     }
     if (q.sort === 'title') items.sort((a, b) => a.title.localeCompare(b.title))
+   // if(items.length) return HttpResponse.json(["Sorry refresh it"],1,1);
     return HttpResponse.json(paginate(items, q.page || 1, q.pageSize || 9))
   }),
 

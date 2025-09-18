@@ -1,7 +1,7 @@
 Quick Start:-
 Prereqs
 
-Node.js 18+
+
 
 npm (or pnpm/yarn, but examples use npm)
 
@@ -22,7 +22,9 @@ npm run preview
 
  Project Architecture:-
 src/
+
   api.js                         // safe fetch helper (JSON auto, error handling)
+  
   App.jsx                        // router -> pages, navbar, error boundary
   components/
     AssessmentField.jsx          // renders each assessment question type
